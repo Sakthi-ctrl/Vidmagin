@@ -1,5 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Routes, Route, Link, useLocation } from 'react-router';
 import { motion, AnimatePresence } from 'motion/react';
+import AsyncVideoInterview from './AsyncVideoInterview';
+import CustomerFeedbackPortal from './CustomerFeedbackPortal';
+import CandidatePrescreening from './CandidatePrescreening';
+import StartupFiltering from './StartupFiltering';
+import About from './About';
 import { 
   ArrowRight, 
   Play, 
@@ -117,7 +123,7 @@ const Navbar = () => {
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
-          <img src={logoImg} alt="Vidmagin Logo" className="h-9 w-auto object-contain" />
+          <Link to="/"><img src={logoImg} alt="Vidmagin Logo" className="h-9 w-auto object-contain" /></Link>
         </div>
         
         {/* Desktop Nav */}
@@ -126,13 +132,32 @@ const Navbar = () => {
             <div className="flex items-center gap-1 text-[15px] font-medium text-[#5A5B5E] hover:text-[#FF4500] transition-colors">
               Platform <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300" />
             </div>
+            
+            {/* Dropdown Menu */}
+            <div className="absolute top-full left-0 mt-2 w-64 rounded-2xl bg-white border border-[#5A5B5E]/10 shadow-xl shadow-[#5A5B5E]/10 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 z-50 overflow-hidden">
+              <div className="p-2 flex flex-col">
+                <Link to="/async-video-interview" className="px-4 py-3 text-[14px] font-medium text-[#5A5B5E] hover:text-[#FF4500] hover:bg-[#FAFAFA] rounded-xl transition-all">Async Video Interview</Link>
+                <Link to="/customer-feedback-portal" className="px-4 py-3 text-[14px] font-medium text-[#5A5B5E] hover:text-[#FF4500] hover:bg-[#FAFAFA] rounded-xl transition-all">Customer Feedback Portal</Link>
+                <Link to="/candidate-prescreening" className="px-4 py-3 text-[14px] font-medium text-[#5A5B5E] hover:text-[#FF4500] hover:bg-[#FAFAFA] rounded-xl transition-all">Candidate Prescreening</Link>
+                <Link to="/startup-filtering" className="px-4 py-3 text-[14px] font-medium text-[#5A5B5E] hover:text-[#FF4500] hover:bg-[#FAFAFA] rounded-xl transition-all">Startup Filtering</Link>
+              </div>
+            </div>
           </div>
           <div className="group relative cursor-pointer py-2">
             <div className="flex items-center gap-1 text-[15px] font-medium text-[#5A5B5E] hover:text-[#FF4500] transition-colors">
               Solutions <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300" />
             </div>
+            
+            {/* Dropdown Menu */}
+            <div className="absolute top-full left-0 mt-2 w-64 rounded-2xl bg-white border border-[#5A5B5E]/10 shadow-xl shadow-[#5A5B5E]/10 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 z-50 overflow-hidden">
+              <div className="p-2 flex flex-col">
+                <a href="#" className="px-4 py-3 text-[14px] font-medium text-[#5A5B5E] hover:text-[#FF4500] hover:bg-[#FAFAFA] rounded-xl transition-all">For Hiring Teams</a>
+                <a href="#" className="px-4 py-3 text-[14px] font-medium text-[#5A5B5E] hover:text-[#FF4500] hover:bg-[#FAFAFA] rounded-xl transition-all">For VCs & Accelerators</a>
+                <a href="#" className="px-4 py-3 text-[14px] font-medium text-[#5A5B5E] hover:text-[#FF4500] hover:bg-[#FAFAFA] rounded-xl transition-all">For Marketing & Sales</a>
+              </div>
+            </div>
           </div>
-          <a href="#about" className="text-[15px] font-medium text-[#5A5B5E] hover:text-[#FF4500] transition-colors">About</a>
+          <Link to="/about" className="text-[15px] font-medium text-[#5A5B5E] hover:text-[#FF4500] transition-colors">About</Link>
           <a href="#contact" className="text-[15px] font-medium text-[#5A5B5E] hover:text-[#FF4500] transition-colors">Contact</a>
         </div>
 
@@ -162,9 +187,24 @@ const Navbar = () => {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden border-t border-[#5A5B5E]/10 bg-white px-4 py-6 space-y-5 overflow-hidden"
           >
-            <a href="#platform" className="block text-lg font-medium text-[#5A5B5E]">Platform</a>
-            <a href="#solutions" className="block text-lg font-medium text-[#5A5B5E]">Solutions</a>
-            <a href="#about" className="block text-lg font-medium text-[#5A5B5E]">About</a>
+            <div className="space-y-4">
+              <a href="#platform" className="block text-lg font-medium text-[#5A5B5E]">Platform</a>
+              <div className="pl-4 border-l-2 border-[#5A5B5E]/10 space-y-3">
+                <Link to="/async-video-interview" className="block text-base font-medium text-[#5A5B5E]/80 hover:text-[#FF4500]" onClick={() => setIsOpen(false)}>Async Video Interview</Link>
+                <Link to="/customer-feedback-portal" className="block text-base font-medium text-[#5A5B5E]/80 hover:text-[#FF4500]" onClick={() => setIsOpen(false)}>Customer Feedback Portal</Link>
+                <Link to="/candidate-prescreening" className="block text-base font-medium text-[#5A5B5E]/80 hover:text-[#FF4500]" onClick={() => setIsOpen(false)}>Candidate Prescreening</Link>
+                <Link to="/startup-filtering" className="block text-base font-medium text-[#5A5B5E]/80 hover:text-[#FF4500]" onClick={() => setIsOpen(false)}>Startup Filtering</Link>
+              </div>
+            </div>
+            <div className="space-y-4">
+              <a href="#solutions" className="block text-lg font-medium text-[#5A5B5E]">Solutions</a>
+              <div className="pl-4 border-l-2 border-[#5A5B5E]/10 space-y-3">
+                <a href="#" className="block text-base font-medium text-[#5A5B5E]/80 hover:text-[#FF4500]">For Hiring Teams</a>
+                <a href="#" className="block text-base font-medium text-[#5A5B5E]/80 hover:text-[#FF4500]">For VCs & Accelerators</a>
+                <a href="#" className="block text-base font-medium text-[#5A5B5E]/80 hover:text-[#FF4500]">For Marketing & Sales</a>
+              </div>
+            </div>
+            <Link to="/about" className="block text-lg font-medium text-[#5A5B5E]" onClick={() => setIsOpen(false)}>About</Link>
             <a href="#contact" className="block text-lg font-medium text-[#5A5B5E]">Contact</a>
             <div className="pt-6 flex flex-col gap-3">
               <button className="w-full rounded-xl border-2 border-[#5A5B5E]/10 px-4 py-3 text-base font-semibold text-[#5A5B5E]">Log In</button>
@@ -304,13 +344,9 @@ const HeroMockup = () => {
   );
 };
 
-export default function App() {
+export function Home() {
   return (
-    <div className="min-h-screen bg-[#FAFAFA] font-sans text-[#5A5B5E] selection:bg-[#FF4500]/20 selection:text-[#C41E00] overflow-x-hidden">
-      {/* Background Noise Texture */}
-      <div className="fixed inset-0 z-50 pointer-events-none opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
-      
-      <Navbar />
+    <>
 
       <main>
         {/* HERO SECTION */}
@@ -600,6 +636,48 @@ export default function App() {
           </div>
         </section>
       </main>
+    </>
+  );
+}
+
+export default function App() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    const metaDescriptions: Record<string, string> = {
+      "/": "Vidmagin is the intelligent video platform for hiring, startup evaluation, and customer feedback — powered by async video and AI-driven assessment.",
+      "/async-video-interview": "Stop scheduling interviews. Vidmagin's async video interview platform lets candidates respond on their schedule while AI surfaces the best ones for your team.",
+      "/customer-feedback-portal": "Capture authentic video testimonials from customers in under 20 minutes. No studio, no editing — just a clean MP4 ready to publish.",
+      "/candidate-prescreening": "Three-layer intelligent candidate screening — resume fit, question analysis, and one-minute video — reveals the right hire before the first interview.",
+      "/startup-filtering": "Screen 100+ startups in hours with AI-powered scoring, founder video analysis, and smart retrieval. Built for VCs, angels, and accelerators.",
+      "/about": "Vidmagin is built to bring clarity, scale, and speed to the most important evaluations — hiring, investment, and customer trust."
+    };
+
+    const description = metaDescriptions[pathname] || metaDescriptions["/"];
+    
+    let metaTag = document.querySelector('meta[name="description"]');
+    if (!metaTag) {
+      metaTag = document.createElement('meta');
+      metaTag.setAttribute('name', 'description');
+      document.head.appendChild(metaTag);
+    }
+    metaTag.setAttribute('content', description);
+  }, [pathname]);
+
+  return (
+    <div className="min-h-screen bg-[#FAFAFA] font-sans text-[#5A5B5E] selection:bg-[#FF4500]/20 selection:text-[#C41E00] overflow-x-hidden">
+      <div className="fixed inset-0 z-50 pointer-events-none opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/async-video-interview" element={<AsyncVideoInterview />} />
+        <Route path="/customer-feedback-portal" element={<CustomerFeedbackPortal />} />
+        <Route path="/candidate-prescreening" element={<CandidatePrescreening />} />
+        <Route path="/startup-filtering" element={<StartupFiltering />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
 
       {/* PREMIUM FOOTER */}
       <footer className="bg-white border-t border-[#5A5B5E]/10 pt-20 pb-10">
@@ -628,10 +706,10 @@ export default function App() {
               <div>
                 <h4 className="font-bold text-[#1A1A1A] mb-6 tracking-wide">Platform</h4>
                 <ul className="space-y-4 text-[15px] font-medium text-[#5A5B5E]/80">
-                  <li><a href="#" className="hover:text-[#FF4500] transition-colors">Async Video Interview</a></li>
-                  <li><a href="#" className="hover:text-[#FF4500] transition-colors">Customer Feedback Portal</a></li>
-                  <li><a href="#" className="hover:text-[#FF4500] transition-colors">Candidate Prescreening</a></li>
-                  <li><a href="#" className="hover:text-[#FF4500] transition-colors">Startup Filtering</a></li>
+                  <li><Link to="/async-video-interview" className="hover:text-[#FF4500] transition-colors">Async Video Interview</Link></li>
+                  <li><Link to="/customer-feedback-portal" className="hover:text-[#FF4500] transition-colors">Customer Feedback Portal</Link></li>
+                  <li><Link to="/candidate-prescreening" className="hover:text-[#FF4500] transition-colors">Candidate Prescreening</Link></li>
+                  <li><Link to="/startup-filtering" className="hover:text-[#FF4500] transition-colors">Startup Filtering</Link></li>
                 </ul>
               </div>
               
@@ -647,7 +725,7 @@ export default function App() {
               <div>
                 <h4 className="font-bold text-[#1A1A1A] mb-6 tracking-wide">Company</h4>
                 <ul className="space-y-4 text-[15px] font-medium text-[#5A5B5E]/80">
-                  <li><a href="#" className="hover:text-[#FF4500] transition-colors">About Us</a></li>
+                  <li><Link to="/about" className="hover:text-[#FF4500] transition-colors">About Us</Link></li>
                   <li><a href="#" className="hover:text-[#FF4500] transition-colors">Careers</a></li>
                   <li><a href="#" className="hover:text-[#FF4500] transition-colors">Contact</a></li>
                 </ul>
