@@ -258,8 +258,6 @@ const HeroMockup = () => {
       className="relative w-full max-w-xl mx-auto lg:max-w-none perspective-1000"
     >
       <motion.div 
-        animate={{ y: [-10, 10, -10] }}
-        transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
         className="relative rounded-3xl border border-white/40 bg-white/60 p-2 shadow-2xl shadow-[#FF4500]/10 backdrop-blur-2xl"
       >
         {/* Mockup Header */}
@@ -382,7 +380,7 @@ export function Home() {
 
       <main>
         {/* HERO SECTION */}
-        <section className="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden">
+        <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-20 overflow-hidden">
           {/* Subtle Grid Background */}
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(#5A5B5E_1px,transparent_1px)] [background-size:24px_24px] opacity-10 mask-image:linear-gradient(to_bottom,white,transparent)"></div>
           
@@ -394,11 +392,6 @@ export function Home() {
                 variants={staggerContainer}
                 className="max-w-2xl relative z-10"
               >
-                <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-[#5A5B5E]/10 shadow-sm mb-8">
-                  <span className="flex h-2 w-2 rounded-full bg-[#FF4500] animate-pulse"></span>
-                  <span className="text-xs font-bold tracking-wide text-[#5A5B5E] uppercase">The New Standard in Hiring</span>
-                </motion.div>
-                
                 <motion.h1 variants={fadeInUp} className="text-6xl sm:text-7xl lg:text-[80px] font-extrabold tracking-tighter text-[#1A1A1A] leading-[1.05] mb-6">
                   Clarity. Scale. <br/>
                   <span className="relative inline-block mt-2">
@@ -407,12 +400,8 @@ export function Home() {
                   </span>
                 </motion.h1>
                 
-                <motion.p variants={fadeInUp} className="text-xl sm:text-2xl font-medium text-[#5A5B5E] mb-6 leading-snug">
+                <motion.p variants={fadeInUp} className="text-xl sm:text-2xl font-medium text-[#5A5B5E] mb-10 leading-snug">
                   The intelligent video platform that transforms how you hire, evaluate, and hear from the people who matter most.
-                </motion.p>
-                
-                <motion.p variants={fadeInUp} className="text-lg text-[#5A5B5E]/70 mb-10 max-w-lg leading-relaxed">
-                  Vidmagin brings together asynchronous video and AI-powered assessment into one unified platform — so you spend less time scheduling and more time deciding.
                 </motion.p>
                 
                 <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4">
