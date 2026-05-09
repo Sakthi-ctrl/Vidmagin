@@ -28,6 +28,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import logoImg from "../imports/logo-1.png";
+import authorImg from "../imports/author.jpg";
 
 // -- Content Data from PDF --
 
@@ -104,7 +105,7 @@ const INSIGHTS_DATA = [
     excerpt: "As we head deeper into the digital age, most domains have incorporated newer technology that has positively affected their productivity. In contrast, a niche that has experienced one of the least advances in tune with technology is the process of pre-screening.",
     date: "JUL 13, 2021",
     author: "PAUL JAI SUDHAN M",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&q=80",
+    avatar: authorImg,
     href: "/blog/pre-screening"
   },
   {
@@ -112,7 +113,7 @@ const INSIGHTS_DATA = [
     excerpt: "In the fast-paced world of recruitment, finding the right talent swiftly and efficiently is crucial for any organization's success. The traditional hiring process often involves time-consuming interviews..",
     date: "SEP 15, 2023",
     author: "PAUL JAI SUDHAN M",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&q=80",
+    avatar: authorImg,
     href: "/blog/optimal-candidate-prescreening"
   },
   {
@@ -120,7 +121,7 @@ const INSIGHTS_DATA = [
     excerpt: "In the dynamic landscape of banking and finance, the Know Your Customer (KYC) verification process stands as a vital cornerstone. As the sector races forward, traditional KYC methods have evolved into Video KYC, an innovative approach embraced by banks.",
     date: "SEP 24, 2023",
     author: "PAUL JAI SUDHAN M",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&q=80",
+    avatar: authorImg,
     href: "/blog/simplifying-limited-kyc"
   }
 ];

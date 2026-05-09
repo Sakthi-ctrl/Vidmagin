@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { motion, useScroll, useSpring } from 'motion/react';
 import { Link } from 'react-router';
 import { ArrowLeft, Twitter, Linkedin, Link2, Quote } from 'lucide-react';
+import authorImg from "../imports/author.jpg";
 
 export default function PreScreeningBlog() {
   const { scrollYProgress } = useScroll();
@@ -51,7 +52,7 @@ export default function PreScreeningBlog() {
 
             <div className="flex flex-wrap items-center gap-6 pt-10 border-t border-white/10">
               <div className="flex items-center gap-4">
-                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&q=80" alt="Paul Jai Sudhan M" className="w-14 h-14 rounded-full object-cover border-2 border-[#111111] shadow-[0_0_0_2px_rgba(255,255,255,0.2)]" />
+                <img src={authorImg} alt="Paul Jai Sudhan M" className="w-14 h-14 rounded-full object-cover border-2 border-[#111111] shadow-[0_0_0_2px_rgba(255,255,255,0.2)]" />
                 <div>
                   <div className="text-[10px] font-bold tracking-widest text-white/40 uppercase mb-1">Written By</div>
                   <div className="text-[14px] font-black tracking-wide text-white uppercase">Paul Jai Sudhan M</div>
@@ -198,7 +199,7 @@ export default function PreScreeningBlog() {
             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#FF4500]/5 to-transparent rounded-full blur-[60px] pointer-events-none group-hover:opacity-100 opacity-50 transition-opacity"></div>
             
             <div className="relative z-10 flex flex-col sm:flex-row items-center sm:items-start gap-8 text-center sm:text-left">
-              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80" alt="Paul Jai Sudhan M" className="w-28 h-28 sm:w-32 sm:h-32 rounded-full object-cover border-4 border-white shadow-lg" />
+              <img src={authorImg} alt="Paul Jai Sudhan M" className="w-28 h-28 sm:w-32 sm:h-32 rounded-full object-cover border-4 border-white shadow-lg" />
               <div className="flex-1">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1A1A1A] text-white text-[10px] font-bold tracking-widest uppercase mb-4">
                   Written By
